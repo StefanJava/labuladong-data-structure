@@ -1,4 +1,4 @@
-package com.stefan;
+package com.stefan.arraylinklist;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -224,7 +224,7 @@ public class MyLinkedList<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<>() {
+        return new Iterator<E>() {
 
             Node<E> p = head.next;
 

@@ -1,4 +1,4 @@
-package com.stefan;
+package com.stefan.arraylinklist;
 
 import java.util.Arrays;
 import java.util.Iterator;
