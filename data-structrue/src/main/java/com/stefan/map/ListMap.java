@@ -26,6 +26,7 @@ public class ListMap<K, V> {
 
     /**
      * 存储key value数据的节点
+     *
      * @param <K> key
      * @param <V> value
      */
@@ -65,6 +66,7 @@ public class ListMap<K, V> {
 
     /**
      * 添加一个键值对，如果之前存在该key，则修改对应的value并返回原value，不存在则添加一个节点，返回null
+     *
      * @param k key
      * @param v value
      * @return oldValue
@@ -89,6 +91,7 @@ public class ListMap<K, V> {
 
     /**
      * 获取键对应的值
+     *
      * @param k key
      * @return value
      */
@@ -105,6 +108,7 @@ public class ListMap<K, V> {
 
     /**
      * 删除key对应的键值对，并返回value
+     *
      * @param k key
      * @return value
      */
@@ -125,8 +129,17 @@ public class ListMap<K, V> {
         return null;
     }
 
+    public boolean containsKey(K key) {
+        if (key == null) {
+            throw new NoSuchElementException("key can not be null");
+        }
+        Node<K, V> node = getNode(key);
+        return node != null;
+    }
+
     /**
      * 获取key对应的键值对节点
+     *
      * @param key 键
      * @return 键值对节点
      */
@@ -144,6 +157,7 @@ public class ListMap<K, V> {
 
     /**
      * 获取键值对数量
+     *
      * @return 键值对数量
      */
     public int size() {
@@ -156,6 +170,7 @@ public class ListMap<K, V> {
 
     /**
      * 获取所有的key
+     *
      * @return keys
      */
     public List<K> keys() {
@@ -168,6 +183,7 @@ public class ListMap<K, V> {
 
     /**
      * 获取所有的键值对
+     *
      * @return 键值对
      */
     public List<Map.Entry<K, V>> entries() {
