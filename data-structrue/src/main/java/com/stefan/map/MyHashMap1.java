@@ -23,7 +23,7 @@ public class MyHashMap1<K, V> {
     }
 
     public MyHashMap1(int cap) {
-        this.table = new ListMap<>[cap];
+        this.table = (ListMap<K, V>[]) new ListMap[cap];
         this.size = 0;
         for (int i = 0; i < cap; i++) {
             table[i] = new ListMap<>();
@@ -87,7 +87,7 @@ public class MyHashMap1<K, V> {
     }
 
     public void resize(int newCap) {
-        ListMap<K, V>[] newTable = new ListMap<>[newCap];
+        ListMap<K, V>[] newTable = (ListMap<K, V>[]) new ListMap[newCap];
         for (int i = 0; i < table.length; i++) {
             List<Map.Entry<K, V>> entries = table[i].entries();
             for (Map.Entry<K, V> entry : entries) {
