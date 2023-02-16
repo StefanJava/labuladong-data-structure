@@ -11,7 +11,7 @@ import java.util.Map;
  * @version: 1.0
  */
 public class Solution387 {
-    public int firstUniqChar(String s) {
+    public int firstUniqChar1(String s) {
         Map<Character, Integer> map = new HashMap<>();
         int len = s.length();
         for (int i = 0; i < len; i++) {
@@ -21,6 +21,21 @@ public class Solution387 {
         for (int i = 0; i < len; i++) {
             char c = s.charAt(i);
             if (map.get(c) == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int firstUniqChar2(String s) {
+        int[] count = new int[26];
+        int len = s.length();
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            count[c - 'a']++;
+        }
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (count[c - 'a'] == 1) {
                 return i;
             }
         }
