@@ -2,8 +2,6 @@ package com.stefan.bst1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Queue;
 
 /**
  * @description: 字典树、前缀树
@@ -11,7 +9,7 @@ import java.util.Queue;
  * @date: 2023/3/7 13:49
  * @version: 1.0
  */
-class TrieMap<V> {
+public class TrieMap<V> {
     // ASCII 码个数
     private static final int R = 256;
     // 当前存在 Map 中的键值对个数
@@ -50,7 +48,7 @@ class TrieMap<V> {
 
         char c = key.charAt(i);
 
-        node.children[c] = put(node.children[c], key, val, i);
+        node.children[c] = put(node.children[c], key, val, i + 1);
         return node;
     }
 
