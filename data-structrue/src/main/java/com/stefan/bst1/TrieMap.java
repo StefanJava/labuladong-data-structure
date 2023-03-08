@@ -203,7 +203,7 @@ public class TrieMap<V> {
 
         for (int i = 0; i < R; i++) {
             // 先将该字符加入 在进行判断
-            sb.append(i);
+            sb.append((char) i);
             traverse(x.children[i], sb, res);
             // i分支遍历完后 进行删除 回溯
             sb.deleteCharAt(sb.length() - 1);
