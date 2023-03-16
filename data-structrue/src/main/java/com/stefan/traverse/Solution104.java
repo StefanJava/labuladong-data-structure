@@ -24,4 +24,33 @@ public class Solution104 {
         maxDepth = Math.max(maxDepth, curMaxDepth);
         return curMaxDepth;
     }
+
+    public int maxDepth2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    private int res = 0;
+    private int depth = 0;
+    public int maxDepth3(TreeNode root) {
+        traverse1(root);
+        return res;
+    }
+
+    public void traverse1(TreeNode cur) {
+        // base case
+        if (cur == null) {
+            return;
+        }
+        depth++;
+        if (cur.left == null && cur.right == null) {
+            res = Math.max(res, depth);
+        }
+        traverse(cur.left);
+        traverse(cur.right);
+        depth--;
+        return;
+    }
 }
