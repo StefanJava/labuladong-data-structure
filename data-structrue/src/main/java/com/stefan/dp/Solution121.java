@@ -33,4 +33,19 @@ public class Solution121 {
         }
         return dp_i_0;
     }
+
+    public int maxProfit3(int[] prices) {
+        // 假设第i天卖股票,则第i天之前的最小值买入股票利润最大, 依次比较每天卖出股票的利润，取最大值,
+        // 记录第i天之前的最小值
+        int minValue = Integer.MAX_VALUE;
+        int maxBenefit = 0;
+        for (int price : prices) {
+            if (price < minValue) {
+                minValue = price;
+            } else {
+                maxBenefit = Math.max(maxBenefit, price - minValue);
+            }
+        }
+        return maxBenefit;
+    }
 }
