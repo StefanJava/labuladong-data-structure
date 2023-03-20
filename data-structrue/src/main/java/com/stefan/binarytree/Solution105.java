@@ -1,4 +1,6 @@
-package com.stefan.traverse;
+package com.stefan.binarytree;
+
+import com.stefan.traverse.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,6 @@
-package com.stefan.traverse;
+package com.stefan.binarytree;
+
+import com.stefan.traverse.TreeNode;
 
 /**
  * @description: 654. 最大二叉树
