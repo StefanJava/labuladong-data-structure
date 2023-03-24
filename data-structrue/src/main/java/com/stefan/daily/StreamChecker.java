@@ -6,21 +6,21 @@ package com.stefan.daily;
  * @date: 2023/3/24 13:10
  * @version: 1.0
  */
+@SuppressWarnings("unused")
 public class StreamChecker {
     private final Trie trie = new Trie();
     private final StringBuilder bd = new StringBuilder();
     public StreamChecker(String[] words) {
         for (String word : words) {
             StringBuilder sb = new StringBuilder(word);
-            trie.add(sb.reverse().toString());
+            trie.add(sb.reverse());
         }
     }
 
     public boolean query(char letter) {
         bd.append(letter);
-        String prefix = bd.reverse().toString();
-        bd.reverse();
-        return trie.exit(prefix);
+        StringBuilder prefix = new StringBuilder(bd);
+        return trie.exist(prefix.reverse());
     }
 }
 
@@ -31,10 +31,10 @@ class Trie {
         boolean isEnd;
         Node[] children = new Node[R];
     }
-    public void add(String word) {
+    public void add(StringBuilder word) {
         root = add(root, word, 0);
     }
-    private Node add(Node root, String word, int index) {
+    private Node add(Node root, StringBuilder word, int index) {
         if (root == null) {
             root = new Node();
         }
@@ -46,10 +46,10 @@ class Trie {
         root.children[c - 'a'] = add(root.children[c - 'a'], word, index + 1);
         return root;
     }
-    public boolean exit(String word) {
-        return exit(root, word, 0);
+    public boolean exist(StringBuilder word) {
+        return exist(root, word, 0);
     }
-    private boolean exit(Node root, String word, int index) {
+    private boolean exist(Node root, StringBuilder word, int index) {
         if (root == null) {
             return false;
         }
@@ -60,10 +60,11 @@ class Trie {
             return false;
         }
         char c = word.charAt(index);
-        return exit(root.children[c - 'a'], word, index + 1);
+        return exist(root.children[c - 'a'], word, index + 1);
     }
 }
 
+@SuppressWarnings("unused")
 class StreamChecker2 {
 
     String s = "";
