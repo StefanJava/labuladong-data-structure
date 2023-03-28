@@ -36,8 +36,7 @@ public class Solution300 {
         int[] tops = new int[len];
         int piles = 0;
 
-        for (int i = 0; i < len; i++) {
-            int poker = nums[i];
+        for (int poker : nums) {
             int left = 0;
             int right = piles;
             while (left < right) {
