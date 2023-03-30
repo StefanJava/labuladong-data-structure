@@ -1,6 +1,8 @@
 package com.stefan.graph.practice;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,10 +13,12 @@ import java.util.List;
  */
 @SuppressWarnings("unchecked, unused")
 public class Solution207 {
-    private boolean[] visited;
-    private boolean[] onPath;
-    private boolean hasCircle;
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    private static boolean[] visited;
+    private static boolean[] onPath;
+    private static LinkedList<Integer> circle = new LinkedList<>();
+    private static boolean hasCircle;
+
+    public static boolean canFinish(int numCourses, int[][] prerequisites) {
         // 构件图 graph[i] 表示的是只有修完课程i 才可修graph[i].get(j)  j = 0 ... n
         visited = new boolean[numCourses];
         onPath = new boolean[numCourses];
@@ -31,9 +35,24 @@ public class Solution207 {
         for (int i = 0; i < numCourses; i++) {
             traverse(graph, i);
         }
+        if (hasCircle) {
+            int last = circle.getLast();
+            Iterator<Integer> iterator = circle.iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next() != last) {
+                    iterator.remove();
+                } else {
+                    break;
+                }
+            }
+        }
         return !hasCircle;
     }
-    private void traverse(List<Integer>[] graph, int v) {
+
+    private static void traverse(List<Integer>[] graph, int v) {
+        if (!hasCircle) {
+            circle.addLast(v);
+        }
         if (onPath[v]) {
             hasCircle = true;
         }
@@ -46,5 +65,11 @@ public class Solution207 {
             traverse(graph, s);
         }
         onPath[v] = false;
+    }
+
+    public static void main(String[] args) {
+        int n = 1;
+        int[][] arr = {};
+        System.out.println(canFinish(n, arr));
     }
 }
