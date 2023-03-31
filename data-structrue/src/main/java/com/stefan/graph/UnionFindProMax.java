@@ -46,7 +46,7 @@ public class UnionFindProMax {
     }
 
     private int findRoot(int x) {
-        while (parent[x] != x) {
+        if (parent[x] != x) {
             parent[x] = findRoot(parent[x]);
         }
         return parent[x];
