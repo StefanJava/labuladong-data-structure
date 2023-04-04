@@ -1,4 +1,4 @@
-package com.stefan.competition;
+package com.stefan.competition.week339;
 
 /**
  * @description: 2609. 最长平衡子字符串
