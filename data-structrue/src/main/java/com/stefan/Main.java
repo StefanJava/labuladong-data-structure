@@ -20,6 +20,9 @@ public class Main {
         studentList.add(s4);
         Collections.sort(studentList);
         System.out.println(studentList);
+
+        Student.B b = new Student.B();
+        b.scan();
     }
 
 }
@@ -63,5 +66,22 @@ class Student implements Comparable<Student> {
                 "age=" + age +
                 ", score=" + score +
                 '}';
+    }
+
+    static class A {
+        public void scan() {
+            doScan();
+        }
+
+        public void doScan() {
+            System.out.println("A.doScan()");
+        }
+    }
+
+    static class B extends A {
+        @Override
+        public void doScan() {
+            System.out.println("B.doScan()");
+        }
     }
 }
